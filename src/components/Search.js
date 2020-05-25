@@ -9,22 +9,27 @@ const TopSection = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 340px;
-  height: 35px;
+  width: 450px;
+  height: 55px;
   border-radius: 50px;
   border: 2px solid white;
   padding-left: 20px;
   margin-top: 30px;
   margin-left: -15px;
-  font-size: 16px;
+  font-size: 20px;
   background: none;
   &:focus {
     outline: none;
   }
+
+  ::placeholder {
+    color: white;
+  }
 `;
 
 const SearchIcon = styled.span`
-  margin-left: -30px;
+  margin-left: -40px;
+  font-size: 22px;
   cursor: pointer;
 `;
 

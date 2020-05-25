@@ -1,13 +1,28 @@
 import React from "react";
+import styled, { keyframes } from "styled-components";
 import Search from "./Search";
 import TodayWeather from "./TodayWeather";
 import WeatherCard from "./WeatherCard";
+
+const AppWrapper = styled.div``;
+
+const WeatherWrapper = styled.div`
+  visibility: ${(props) =>
+    props.weatherData === null || props.error ? "hidden" : "visible"};
+`;
+
+const WeatherCards = styled.div`
+  margin-top: 30px;
+  height: 280px;
+  display: flex;
+  overflow-x: scroll;
+`;
 
 class WeatherApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      city: "lomza",
+      city: "",
       weatherData: null,
       forecastData: [],
       error: false,
@@ -82,24 +97,8 @@ class WeatherApp extends React.Component {
   }
 
   render() {
-    if (this.state.error) {
-      return (
-        <div>
-          <Search
-            handleSearch={this.handleSearch}
-            handleKeyPress={this.handleKeyPress}
-            handleChange={this.handleChange}
-            data={this.state}
-          />
-          <h2 style={{ textAlign: "center", marginTop: "150px" }}>
-            Nie znaleziono takiej miejscowości
-          </h2>
-        </div>
-      );
-    }
-
     return (
-      <div>
+      <AppWrapper>
         <Search
           handleSearch={this.handleSearch}
           handleKeyPress={this.handleKeyPress}
@@ -107,19 +106,16 @@ class WeatherApp extends React.Component {
           data={this.state}
         />
 
-        {this.state.weatherData !== null ? (
-          <TodayWeather data={this.state} />
-        ) : null}
+        <WeatherWrapper {...this.state}>
+          {this.state.weatherData !== null ? (
+            <TodayWeather data={this.state} />
+          ) : null}
 
-        <div
-          style={{
-            visibility: this.state.weatherData === null ? "hidden" : "visible",
-          }}
-          className="weather-cards-wrapper"
-        >
-          <WeatherCard data={this.state} />
-        </div>
-      </div>
+          <WeatherCards>
+            <WeatherCard data={this.state} />
+          </WeatherCards>
+        </WeatherWrapper>
+      </AppWrapper>
     );
   }
 }

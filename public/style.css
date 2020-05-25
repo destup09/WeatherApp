@@ -6,36 +6,7 @@
   color: white;
 }
 
-/*   today weather   */
-
-.today-weather-wrapper {
-  display: flex;
-  height: 350px;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-}
-
-.city-date-panel,
-.weather-panel {
-  text-align: left;
-}
-
-.city-date-panel h2,
-.weather-panel h2 {
-  margin-top: 10px;
-  text-transform: capitalize;
-}
-
 /*    weather cards    */
-
-.weather-cards-wrapper {
-  margin-top: 30px;
-  height: 280px;
-  display: flex;
-  overflow-x: scroll;
-}
 
 ::-webkit-scrollbar {
   width: 10px;

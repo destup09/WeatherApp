@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCloud,
@@ -10,10 +11,32 @@ import {
   faSmog,
 } from "@fortawesome/free-solid-svg-icons";
 
+const TodayWeatherWrapper = styled.div`
+  display: flex;
+  height: 350px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+`;
+
+const InfoPanel = styled.div`
+  text-align: left;
+`;
+
+const WeatherInfo = styled.div`
+  text-align: left;
+`;
+
+const MainWeather = styled.div``;
+
+const infoStyle = {
+  marginTop: "10px",
+  textTransform: "capitalize",
+};
+
 function TodayWeather(props) {
   const weather = props.data.weatherData;
-
-  console.log(weather);
   let currentDate = new Date();
 
   function getDayName(currentDate, locale) {
@@ -53,17 +76,18 @@ function TodayWeather(props) {
   }
 
   return (
-    <div className="today-weather-wrapper">
-      <div className="city-date-panel">
-        <h1>
+    <TodayWeatherWrapper>
+      <InfoPanel>
+        <h1 style={infoStyle}>
           {weather.name}, {weather.sys.country}
         </h1>
-        <h2>{dayName}</h2>
-        <h2>
+        <h2 style={infoStyle}>{dayName}</h2>
+        <h2 style={infoStyle}>
           {dayNumeric} {month}
         </h2>
-      </div>
-      <div className="temperature-panel">
+      </InfoPanel>
+
+      <MainWeather>
         <div style={{ display: "flex", alignItems: "center" }}>
           <span style={{ fontSize: "80px" }}>{weatherIcon}</span>
           <h1
@@ -72,16 +96,15 @@ function TodayWeather(props) {
             {Math.floor(weather.main.temp)}°
           </h1>
         </div>
-
         <h1>{weatherDesc}</h1>
-      </div>
+      </MainWeather>
 
-      <div className="weather-panel">
+      <WeatherInfo>
         <h2>Wiatr: {weather.wind.speed} km/h</h2>
         <h2>Deszcz: {weather.main.humidity}%</h2>
         <h2>Ciśnienie: {weather.main.pressure} hpa</h2>
-      </div>
-    </div>
+      </WeatherInfo>
+    </TodayWeatherWrapper>
   );
 }
 
