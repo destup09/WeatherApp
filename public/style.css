@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+  color: white;
+}
+
+/*   today weather   */
+
+.today-weather-wrapper {
+  display: flex;
+  height: 350px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.city-date-panel,
+.weather-panel {
+  text-align: left;
+}
+
+.city-date-panel h2,
+.weather-panel h2 {
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+
+/*    weather cards    */
+
+.weather-cards-wrapper {
+  margin-top: 30px;
+  height: 280px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+}
