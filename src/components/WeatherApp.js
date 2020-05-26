@@ -3,12 +3,17 @@ import styled, { keyframes } from "styled-components";
 import Search from "./Search";
 import TodayWeather from "./TodayWeather";
 import WeatherCard from "./WeatherCard";
+import NotFound from "./NotFound";
+import FadeIn from "./FadeIn";
 
 const AppWrapper = styled.div``;
 
 const WeatherWrapper = styled.div`
-  visibility: ${(props) =>
-    props.weatherData === null || props.error ? "hidden" : "visible"};
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+  top: 20px;
+  animation: ${FadeIn} 0.7s forwards;
 `;
 
 const WeatherCards = styled.div`
@@ -67,7 +72,7 @@ class WeatherApp extends React.Component {
           error: false,
         });
 
-        console.log(this.state.error);
+        console.log(this.state.forecastData);
       })
       .catch((error) => {
         this.setState({
@@ -106,15 +111,20 @@ class WeatherApp extends React.Component {
           data={this.state}
         />
 
-        <WeatherWrapper {...this.state}>
-          {this.state.weatherData !== null ? (
-            <TodayWeather data={this.state} />
-          ) : null}
+        {this.state.error ||
+          (this.state.weatherData !== null && (
+            <WeatherWrapper {...this.state}>
+              {this.state.weatherData !== null ? (
+                <TodayWeather data={this.state} />
+              ) : null}
 
-          <WeatherCards>
-            <WeatherCard data={this.state} />
-          </WeatherCards>
-        </WeatherWrapper>
+              <WeatherCards>
+                <WeatherCard data={this.state} />
+              </WeatherCards>
+            </WeatherWrapper>
+          ))}
+
+        {this.state.error && <NotFound />}
       </AppWrapper>
     );
   }

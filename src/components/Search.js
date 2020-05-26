@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TopSection = styled.div`
-  padding: 35px 0 35px 0;
+  padding: 50px 0 15px 0;
   text-align: center;
 `;
 
@@ -14,16 +14,19 @@ const SearchInput = styled.input`
   border-radius: 50px;
   border: 2px solid white;
   padding-left: 20px;
-  margin-top: 30px;
+  margin-top: 80px;
   margin-left: -15px;
   font-size: 20px;
   background: none;
+  font-weight: bold;
+
   &:focus {
     outline: none;
   }
 
   ::placeholder {
     color: white;
+    font-weight: bold;
   }
 `;
 

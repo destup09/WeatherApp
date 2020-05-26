@@ -13,7 +13,7 @@ import {
 
 const TodayWeatherWrapper = styled.div`
   display: flex;
-  height: 350px;
+  height: 300px;
   width: 100%;
   justify-content: space-around;
   align-items: center;
