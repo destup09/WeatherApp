@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import device from "../responsive/Responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TopSection = styled.div`
-  padding: 50px 0 15px 0;
+  padding: 2rem 0 0 0;
   text-align: center;
+
+  @media ${device.mobileL} {
+    padding-top: 1rem;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -14,7 +19,7 @@ const SearchInput = styled.input`
   border-radius: 50px;
   border: 2px solid white;
   padding-left: 20px;
-  margin-top: 80px;
+  margin-top: 3rem;
   margin-left: -15px;
   font-size: 20px;
   background: none;
@@ -27,6 +32,14 @@ const SearchInput = styled.input`
   ::placeholder {
     color: white;
     font-weight: bold;
+  }
+
+  @media ${device.mobileL} {
+    width: 90%;
+    height: 45px;
+    font-size: 16px;
+    margin: 30px auto;
+    margin-left: -20px;
   }
 `;
 

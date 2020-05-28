@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import device from "../responsive/Responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCloud,
@@ -13,22 +14,101 @@ import {
 
 const TodayWeatherWrapper = styled.div`
   display: flex;
-  height: 300px;
+  height: auto;
   width: 100%;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  padding: 4.5rem 0 4.5rem 0;
+
+  @media ${device.laptopL} {
+    padding: 3rem 0 3rem 0;
+  }
+
+  @media ${device.mobileL} {
+    padding: 1rem 0 1rem 0;
+    font-size: 10px;
+  }
 `;
 
 const InfoPanel = styled.div`
   text-align: left;
+
+  @media ${device.laptop} {
+    font-size: 0.8rem;
+  }
+
+  @media ${device.mobileL} {
+    width: 50%;
+    padding-bottom: 20px;
+  }
+`;
+
+const MainWeather = styled.div`
+  text-align: center;
+  display: flex;
+
+  @media ${device.laptop} {
+    font-size: 0.8rem;
+  }
+
+  @media ${device.mobileL} {
+    width: auto;
+    text-align: right;
+    padding-bottom: 20px;
+  }
+`;
+
+const Desc = styled.div`
+  padding: 1rem;
+
+  @media ${device.mobileL} {
+    padding: 0.3rem;
+  }
+`;
+
+const TempWrapper = styled.div`
+  display: flex;
+  align-content: flex-end;
+  align-items: center;
+  margin: 0;
+  font-size: 26px;
+
+  @media ${device.mobileL} {
+    font-size: 16px;
+  }
 `;
 
 const WeatherInfo = styled.div`
   text-align: left;
+
+  @media ${device.laptop} {
+    font-size: 0.8rem;
+  }
+
+  @media ${device.mobileL} {
+    font-size: 0.7rem;
+    padding: 1rem 0 3rem 0.5rem;
+    width: 100%;
+    border-top: 2px solid white;
+  }
 `;
 
-const MainWeather = styled.div``;
+const MainIcon = styled.span`
+  font-size: 80px;
+  padding-right: 25px;
+
+  @media ${device.laptop} {
+    font-size: 3.5rem;
+  }
+
+  @media ${device.mobileL} {
+    font-size: 40px;
+    padding-right: 10px;
+  }
+`;
 
 const infoStyle = {
   marginTop: "10px",
@@ -88,21 +168,20 @@ function TodayWeather(props) {
       </InfoPanel>
 
       <MainWeather>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <span style={{ fontSize: "80px" }}>{weatherIcon}</span>
-          <h1
-            style={{ textAlign: "center", fontSize: "60px", padding: "15px" }}
-          >
-            {Math.floor(weather.main.temp)}°
-          </h1>
-        </div>
-        <h1>{weatherDesc}</h1>
+        <Desc>
+          <TempWrapper>
+            <MainIcon>{weatherIcon}</MainIcon>
+            <h1>{Math.floor(weather.main.temp)}°</h1>
+          </TempWrapper>
+
+          <h1>{weatherDesc}</h1>
+        </Desc>
       </MainWeather>
 
       <WeatherInfo>
-        <h2>Wiatr: {weather.wind.speed} km/h</h2>
-        <h2>Deszcz: {weather.main.humidity}%</h2>
-        <h2>Ciśnienie: {weather.main.pressure} hpa</h2>
+        <h2 style={infoStyle}>Wiatr: {weather.wind.speed} km/h</h2>
+        <h2 style={infoStyle}>Deszcz: {weather.main.humidity}%</h2>
+        <h2 style={infoStyle}>Ciśnienie: {weather.main.pressure} hpa</h2>
       </WeatherInfo>
     </TodayWeatherWrapper>
   );

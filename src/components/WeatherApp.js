@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import device from "../responsive/Responsive";
 import Search from "./Search";
 import TodayWeather from "./TodayWeather";
 import WeatherCard from "./WeatherCard";
@@ -17,17 +18,20 @@ const WeatherWrapper = styled.div`
 `;
 
 const WeatherCards = styled.div`
-  margin-top: 30px;
-  height: 280px;
+  height: 250px;
   display: flex;
   overflow-x: scroll;
+
+  @media ${device.laptopL} {
+    margin-bottom: 20px;
+  }
 `;
 
 class WeatherApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      city: "",
+      city: "lomza",
       weatherData: null,
       forecastData: [],
       error: false,

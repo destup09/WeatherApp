@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const WeatherCards = styled.div`
-  margin: 15px;
+  margin: 0 15px;
   height: 180px;
   min-width: 140px;
   background: rgba(255, 255, 255, 0.15);
