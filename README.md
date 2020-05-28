@@ -4,11 +4,11 @@ https://destup09.github.io/WeatherApp/
 ### First clone this repository.
 
 $ git clone https://github.com/destup09/WeatherApp.git
+
 Install dependencies. Make sure you already have nodejs & npm installed in your system.
-
 `$ npm install # or yarn`
-Run it
 
+Run it
 `$ npm start # or yarn start`
 
 Description
