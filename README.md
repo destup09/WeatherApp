@@ -16,5 +16,5 @@ Simple react weather app using OpenWeatherMap API.
 
 Technologies:
 
--React
--Styled Component
+- React
+- Styled Component
