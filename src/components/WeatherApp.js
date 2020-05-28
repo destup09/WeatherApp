@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import device from "../responsive/Responsive";
 import Search from "./Search";
 import TodayWeather from "./TodayWeather";
@@ -31,7 +31,7 @@ class WeatherApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      city: "lomza",
+      city: "",
       weatherData: null,
       forecastData: [],
       error: false,

@@ -34,7 +34,7 @@ function WeatherCard(props) {
     }
 
     return (
-      <WeatherCards>
+      <WeatherCards key={i.dt}>
         <h3 style={{ padding: "10px 0 5px 0" }}>{day}</h3>
         <p style={{ fontSize: "20px", padding: "0 0 5px 0" }}>
           {dayNumeric}.{monthNumeric}
